@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CANDIDATOS DE DIREITA PARA MUDAR O BRASIL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --verde-bandeira: #009c3b;
+            --verde-escuro: #006625;
+            --amarelo-ouro: #ffdf00;
+            --amarelo-vibrante: #f7c000;
+            --azul-brasil: #002776;
+            --azul-escuro: #001747;
+            --bg-verde-claro: #e8f5e9;
+            --bg-azul-claro: #e3f2fd;
+            --texto-dark: #1e293b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #001747 0%, #002776 50%, #006625 100%);
+            color: var(--texto-dark);
+            min-height: 100vh;
+            padding: 30px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .container {
+            max-width: 1100px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            border: 4px solid var(--amarelo-vibrante);
+        }
+
+        /* Header Styling */
+        header {
+            background: linear-gradient(135deg, var(--verde-escuro) 0%, var(--verde-bandeira) 60%, var(--azul-brasil) 100%);
+            color: #ffffff;
+            text-align: center;
+            padding: 40px 20px 35px;
+            position: relative;
+            border-bottom: 6px solid var(--amarelo-ouro);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--verde-bandeira), var(--amarelo-ouro), var(--azul-brasil));
+        }
+
+        .flag-accent {
+            display: inline-block;
+            background: var(--amarelo-ouro);
+            color: var(--azul-escuro);
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 6px 18px;
+            border-radius: 50px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffffff;
+            text-shadow: 2px 3px 6px rgba(0, 0, 0, 0.5);
+            line-height: 1.2;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--amarelo-ouro);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .content-area {
+            padding: 30px;
+        }
+
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #f8fafc;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 25px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        .stat-item {
+            flex: 1;
+        }
+
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--azul-brasil);
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: #64748b;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        /* Table Styling */
+        .table-responsive {
+            overflow-x: auto;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #cbd5e1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        thead {
+            background: linear-gradient(90deg, var(--azul-escuro) 0%, var(--azul-brasil) 100%);
+            color: #ffffff;
+        }
+
+        th {
+            font-family: 'Montserrat', sans-serif;
+            padding: 16px 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            border-bottom: 3px solid var(--amarelo-ouro);
+        }
+
+        th.center, td.center {
+            text-align: center;
+        }
+
+        td {
+            padding: 14px 20px;
+            color: #1e293b;
+            font-weight: 600;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            vertical-align: middle;
+        }
+
+        /* Alternating State Row Background Colors */
+        tr.state-row-verde {
+            background-color: var(--bg-verde-claro);
+        }
+
+        tr.state-row-verde:hover {
+            background-color: #d4edda;
+        }
+
+        tr.state-row-azul {
+            background-color: var(--bg-azul-claro);
+        }
+
+        tr.state-row-azul:hover {
+            background-color: #d0e7ff;
+        }
+
+        /* Badges & Tags */
+        .state-badge {
+            display: inline-block;
+            font-weight: 800;
+            font-size: 0.95rem;
+            color: var(--azul-escuro);
+        }
+
+        .tse-number {
+            font-family: 'Montserrat', sans-serif;
+            display: inline-block;
+            background-color: var(--azul-escuro);
+            color: var(--amarelo-ouro);
+            font-weight: 800;
+            padding: 4px 12px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .party-badge {
+            display: inline-block;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background-color: #ffffff;
+            color: var(--verde-escuro);
+            border: 1.5px solid var(--verde-escuro);
+        }
+
+        .candidate-name {
+            font-size: 1rem;
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        footer {
+            background-color: #0f172a;
+            color: #94a3b8;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85rem;
+            border-top: 3px solid var(--amarelo-vibrante);
+        }
+
+        footer strong {
+            color: var(--amarelo-ouro);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            h2 {
+                font-size: 1rem;
+            }
+            th, td {
+                padding: 10px 12px;
+                font-size: 0.85rem;
+            }
+            .content-area {
+                padding: 15px;
+            }
+            .stats-bar {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <span class="flag-accent">Eleições Senado Federal</span>
+            <h1>CANDIDATOS DE DIREITA PARA MUDAR O BRASIL</h1>
+            <h2>VEJA EM QUEM VOTAR NO SEU ESTADO</h2>
+        </header>
+
+        <div class="content-area">
+            <div class="stats-bar">
+                <div class="stat-item">
+                    <div class="stat-number">26</div>
+                    <div class="stat-label">Estados + DF</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">45</div>
+                    <div class="stat-label">Candidatos Listados</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Compromisso com o Brasil</div>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Estado</th>
+                            <th class="center">Número TSE</th>
+                            <th class="center">Sigla do Partido</th>
+                            <th>Nome do Candidato</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">Acre</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Márcio Bittar</span></td>
+                        </tr>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">Acre</span></td>
+                            <td class="center"><span class="tse-number">10</span></td>
+                            <td class="center"><span class="party-badge">Republicanos</span></td>
+                            <td><span class="candidate-name">Mara Rocha</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Alagoas</span></td>
+                            <td class="center"><span class="tse-number">45</span></td>
+                            <td class="center"><span class="party-badge">PSDB</span></td>
+                            <td><span class="candidate-name">Marina Cândida</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Alagoas</span></td>
+                            <td class="center"><span class="tse-number">11</span></td>
+                            <td class="center"><span class="party-badge">PP</span></td>
+                            <td><span class="candidate-name">Arthur Lira</span></td>
+                        </tr>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">Amapá</span></td>
+                            <td class="center"><span class="tse-number">55</span></td>
+                            <td class="center"><span class="party-badge">PSD</span></td>
+                            <td><span class="candidate-name">Lucas Barreto</span></td>
+                        </tr>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">Amapá</span></td>
+                            <td class="center"><span class="tse-number">20</span></td>
+                            <td class="center"><span class="party-badge">Podemos</span></td>
+                            <td><span class="candidate-name">Rayssa Furlan</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Amazonas</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Capitão Alberto</span></td>
+                        </tr>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">Bahia</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">João Roma</span></td>
+                        </tr>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">Bahia</span></td>
+                            <td class="center"><span class="tse-number">10</span></td>
+                            <td class="center"><span class="party-badge">Republicanos</span></td>
+                            <td><span class="candidate-name">Angelo Coronel</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Ceará</span></td>
+                            <td class="center"><span class="tse-number">44</span></td>
+                            <td class="center"><span class="party-badge">União Brasil</span></td>
+                            <td><span class="candidate-name">Capitão Wagner</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Ceará</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Alcides Fernandes</span></td>
+                        </tr>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">Distrito Federal</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Bia Kicis</span></td>
+                        </tr>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">Distrito Federal</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Michelle Bolsonaro</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Espírito Santo</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Maguinha Malta</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Espírito Santo</span></td>
+                            <td class="center"><span class="tse-number">10</span></td>
+                            <td class="center"><span class="party-badge">Republicanos</span></td>
+                            <td><span class="candidate-name">Evair de Melo</span></td>
+                        </tr>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">Goiás</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Gustavo Gayer</span></td>
+                        </tr>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">Goiás</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Oséias Varão</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Maranhão</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Cidônio Gonçalves</span></td>
+                        </tr>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">Mato Grosso</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">José Medeiros</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Mato Grosso do Sul</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Capitão Contar</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Mato Grosso do Sul</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Reinaldo Azambuja</span></td>
+                        </tr>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">Minas Gerais</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Domingos Sávio</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Pará</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Éder Mauro</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Pará</span></td>
+                            <td class="center"><span class="tse-number">20</span></td>
+                            <td class="center"><span class="party-badge">Podemos</span></td>
+                            <td><span class="candidate-name">Zequinha Marinho</span></td>
+                        </tr>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">Paraíba</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Marcelo Queiroga</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Paraná</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Filipe Barros</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Paraná</span></td>
+                            <td class="center"><span class="tse-number">30</span></td>
+                            <td class="center"><span class="party-badge">Novo</span></td>
+                            <td><span class="candidate-name">Deltan Dallagnol</span></td>
+                        </tr>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">Pernambuco</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Mendonça Filho</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Piauí</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Thiago Junqueira</span></td>
+                        </tr>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">Rio de Janeiro</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Carlos Portinho</span></td>
+                        </tr>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">Rio de Janeiro</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Carlos Jordy</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Rio Grande do Norte</span></td>
+                            <td class="center"><span class="tse-number">20</span></td>
+                            <td class="center"><span class="party-badge">Podemos</span></td>
+                            <td><span class="candidate-name">Styvenson Valentim</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Rio Grande do Norte</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Coronel Hélio</span></td>
+                        </tr>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">Rio Grande do Sul</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Ubiratan Sanderson</span></td>
+                        </tr>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">Rio Grande do Sul</span></td>
+                            <td class="center"><span class="tse-number">30</span></td>
+                            <td class="center"><span class="party-badge">Novo</span></td>
+                            <td><span class="candidate-name">Marcel van Hattem</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Rondônia</span></td>
+                            <td class="center"><span class="tse-number">44</span></td>
+                            <td class="center"><span class="party-badge">União Brasil</span></td>
+                            <td><span class="candidate-name">Fernando Máximo</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Rondônia</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Bruno Scheid</span></td>
+                        </tr>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">Roraima</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Hélio Negão</span></td>
+                        </tr>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">Roraima</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Antonio Carlos Nicoletti</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Santa Catarina</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Carol de Toni</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Santa Catarina</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Carlos Bolsonaro</span></td>
+                        </tr>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">São Paulo</span></td>
+                            <td class="center"><span class="tse-number">11</span></td>
+                            <td class="center"><span class="party-badge">PP</span></td>
+                            <td><span class="candidate-name">Guilherme Derrite</span></td>
+                        </tr>
+                        <tr class="state-row-verde">
+                            <td><span class="state-badge">São Paulo</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">André do Prado</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Sergipe</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Coronel Rocha</span></td>
+                        </tr>
+                        <tr class="state-row-azul">
+                            <td><span class="state-badge">Sergipe</span></td>
+                            <td class="center"><span class="tse-number">22</span></td>
+                            <td class="center"><span class="party-badge">PL</span></td>
+                            <td><span class="candidate-name">Rodrigo Valadares</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <footer>
+            <p>Guia Eleitoral — <strong>Candidatos ao Senado Federal</strong> — Em defesa do Brasil</p>
+        </footer>
+    </div>
+
+</body>
+</html>
