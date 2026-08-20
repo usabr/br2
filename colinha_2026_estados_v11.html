@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segue a "Colinha" que pode salvar o nosso País</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #001b44;
+            color: #0f172a;
+            padding: 30px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+
+        .main-wrapper {
+            width: 100%;
+            max-width: 1100px;
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border: 4px solid #ffcc00;
+        }
+
+        /* Top Header Banner */
+        .header-banner {
+            background: linear-gradient(135deg, #008736 0%, #005a2b 60%, #003366 100%);
+            border-radius: 16px;
+            padding: 28px 20px;
+            text-align: center;
+            position: relative;
+            border: 3px solid #ffcc00;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .top-pill {
+            display: inline-block;
+            background-color: #ffcc00;
+            color: #001b44;
+            font-weight: 500;
+            font-size: 0.85rem;
+            padding: 6px 20px;
+            border-radius: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 14px;
+        }
+
+        .header-banner h1 {
+            color: #ffffff;
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.25;
+        }
+
+        .subtitle-1 {
+            color: #e2e8f0;
+            font-size: 1rem;
+            font-weight: 600;
+            max-width: 900px;
+            margin: 0 auto 12px auto;
+            line-height: 1.4;
+        }
+
+        .subtitle-2 {
+            color: #ffcc00;
+            font-size: 1.1rem;
+            font-weight: 800;
+            max-width: 900px;
+            margin: 0 auto;
+            line-height: 1.4;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+        }
+
+        /* UF Selection Menu Section */
+        .uf-section {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .uf-section-title {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #001b44;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .uf-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .uf-btn {
+            background-color: #ffffff;
+            color: #001b44;
+            border: 2px solid #001b44;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.95rem;
+            padding: 8px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .uf-btn:hover {
+            background-color: #ffcc00;
+            border-color: #ffcc00;
+            color: #001b44;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        /* CLASSE DE BORDA VERMELHA IMPERDIÁVEL (Alta Especificidade) */
+        .borda-vermelha, 
+        button.uf-btn.borda-vermelha, 
+        button.uf-btn.borda-vermelha:hover, 
+        button.uf-btn.borda-vermelha.active {
+            border: 3.5px solid #ff0000 !important;
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.7) !important;
+            color: #d00000 !important;
+            font-weight: 900 !important;
+        }
+
+        button.uf-btn.borda-vermelha.active {
+            background: linear-gradient(135deg, #008736 0%, #005a2b 100%) !important;
+            color: #ffffff !important;
+            border: 3.5px solid #ff0000 !important;
+        }
+
+        .uf-btn.active {
+            background: linear-gradient(135deg, #008736 0%, #005a2b 100%);
+            border-color: #008736;
+            color: #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 135, 54, 0.3);
+            transform: translateY(-2px);
+        }
+
+        
+        /* Texto de aviso dinâmico por estado */
+        .state-warning-text {
+            color: #d00000;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-align: center;
+            margin-top: -10px;
+            margin-bottom: 16px;
+            max-width: 650px;
+            display: none; /* Escondido por padrão, mostrado via JS */
+        }
+
+        /* Image Display Box */
+        .colinha-display-card {
+            background-color: #f1f5f9;
+            border: 2px solid #cbd5e1;
+            border-radius: 14px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .state-active-title {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #001b44;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .image-wrapper {
+            max-width: 650px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border: 1px solid #cbd5e1;
+            margin-bottom: 20px;
+            cursor: pointer;
+            min-height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .colinha-img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            object-fit: contain;
+        }
+
+        /* Cartão de aviso quando imagem não for encontrada */
+        .image-not-found-card {
+            display: none;
+            padding: 30px 20px;
+            text-align: center;
+            color: #64748b;
+        }
+
+        .image-not-found-card h3 {
+            color: #d97706;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .image-not-found-card p {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Action Button */
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-size: 1rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .btn-fullscreen {
+            background-color: #ffcc00;
+            color: #001b44;
+        }
+
+        .btn-fullscreen:hover {
+            background-color: #e6b800;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 204, 0, 0.4);
+        }
+
+        /* Fullscreen Modal Overlay */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            height: 100dvh;
+            background-color: rgba(0, 15, 40, 0.96);
+            z-index: 99999;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            overscroll-behavior: contain;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            padding: 15px 10px 25px 10px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-container {
+            width: 100%;
+            max-width: 800px;
+            min-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            margin: auto;
+        }
+
+        /* Update Modal Header for the red warning text */
+        .modal-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            color: #ffffff;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 204, 0, 0.3);
+            margin-bottom: 12px;
+        }
+        
+        .modal-header-content {
+            display: flex;
+            flex-direction: column;
+            max-width: 85%;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            padding-left: 42px; /* to offset the close button on the right for true centering */
+        }
+
+        .modal-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #ffcc00;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .modal-warning-text {
+            color: #ff4d4d; /* Bright red for dark background */
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 6px;
+            display: none; /* hidden by default */
+            line-height: 1.3;
+        }
+
+        .close-modal-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            font-size: 1.3rem;
+            font-weight: 900;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .close-modal-btn:hover {
+            background: #ffcc00;
+            color: #001b44;
+            border-color: #ffcc00;
+        }
+
+        .modal-body {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            flex: 1;
+        }
+
+        .modal-img {
+            max-width: 100%;
+            max-height: 75vh;
+            max-height: 75dvh;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            border: 3px solid #ffcc00;
+        }
+
+        .modal-footer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 204, 0, 0.3);
+            margin-top: 12px;
+        }
+
+        .btn-modal-download {
+            background-color: #ffcc00;
+            color: #001b44;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: 900;
+            font-size: 0.95rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.4);
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+        }
+
+        .btn-modal-download:hover {
+            background-color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .main-wrapper { padding: 12px; }
+            .header-banner { padding: 20px 12px; }
+            .header-banner h1 { font-size: 1.35rem; }
+            .subtitle-1 { font-size: 0.85rem; }
+            .subtitle-2 { font-size: 0.95rem; }
+            .uf-btn { padding: 6px 10px; font-size: 0.85rem; }
+            .colinha-display-card { padding: 14px 10px; }
+            .state-active-title { font-size: 1.1rem; }
+            .action-btn { width: 100%; justify-content: center; padding: 12px 16px; font-size: 0.85rem; }
+            .btn-modal-download { font-size: 0.85rem; padding: 12px 20px; width: 100%; justify-content: center; }
+            .modal-img { max-height: 65vh; max-height: 65dvh; }
+            
+            .modal-header-content { padding-left: 0; padding-right: 10px; text-align: left; align-items: flex-start; }
+            .close-modal-btn { width: 36px; height: 36px; font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="main-wrapper">
+    <!-- Header Banner -->
+    <div class="header-banner">
+        <div class="top-pill">Brasil 2026</div>
+        <h1>Segue a "Colinha" que pode salvar o nosso País</h1>
+        <p class="subtitle-1">São as melhores escolhas dentro de um universo "Possível" e não Ideal, mas para o momento pelo menos poderemos afastar a esquerda do Poder.</p>
+        <p class="subtitle-2">Imprima, Distribua, Divulgue, Temos um BRASIL para SALVAR, escolha seu estado e baixe sua Colinha e bora pra Batalha!</p>
+    </div>
+
+    <!-- UF Selection Menu -->
+    <div class="uf-section">
+        <div class="uf-section-title">Clique no seu Estado para visualizar a Colinha:</div>
+        <div class="uf-grid" id="ufGrid">
+            <button class="uf-btn borda-vermelha" onclick="selectUF('AC', 'Acre')">AC</button>
+            <button class="uf-btn" onclick="selectUF('AL', 'Alagoas')">AL</button>
+            <button class="uf-btn" onclick="selectUF('AP', 'Amapá')">AP</button>
+            <button class="uf-btn" onclick="selectUF('AM', 'Amazonas')">AM</button>
+            <button class="uf-btn" onclick="selectUF('BA', 'Bahia')">BA</button>
+            <button class="uf-btn" onclick="selectUF('CE', 'Ceará')">CE</button>
+            <button class="uf-btn" onclick="selectUF('DF', 'Distrito Federal')">DF</button>
+            <button class="uf-btn" onclick="selectUF('ES', 'Espírito Santo')">ES</button>
+            <button class="uf-btn" onclick="selectUF('GO', 'Goiás')">GO</button>
+            <button class="uf-btn" onclick="selectUF('MA', 'Maranhão')">MA</button>
+            <button class="uf-btn" onclick="selectUF('MT', 'Mato Grosso')">MT</button>
+            <button class="uf-btn" onclick="selectUF('MS', 'Mato Grosso do Sul')">MS</button>
+            <button class="uf-btn borda-vermelha" onclick="selectUF('MG', 'Minas Gerais')">MG</button>
+            <button class="uf-btn" onclick="selectUF('PA', 'Pará')">PA</button>
+            <button class="uf-btn" onclick="selectUF('PB', 'Paraíba')">PB</button>
+            <button class="uf-btn" onclick="selectUF('PR', 'Paraná')">PR</button>
+            <button class="uf-btn" onclick="selectUF('PE', 'Pernambuco')">PE</button>
+            <button class="uf-btn" onclick="selectUF('PI', 'Piauí')">PI</button>
+            <button class="uf-btn borda-vermelha" onclick="selectUF('RJ', 'Rio de Janeiro')">RJ</button>
+            <button class="uf-btn" onclick="selectUF('RN', 'Rio Grande do Norte')">RN</button>
+            <button class="uf-btn" onclick="selectUF('RS', 'Rio Grande do Sul')">RS</button>
+            <button class="uf-btn" onclick="selectUF('RO', 'Rondônia')">RO</button>
+            <button class="uf-btn" onclick="selectUF('RR', 'Roraima')">RR</button>
+            <button class="uf-btn" onclick="selectUF('SC', 'Santa Catarina')">SC</button>
+            <button class="uf-btn borda-vermelha" onclick="selectUF('SP', 'São Paulo')">SP</button>
+            <button class="uf-btn" onclick="selectUF('SE', 'Sergipe')">SE</button>
+            <button class="uf-btn" onclick="selectUF('TO', 'Tocantins')">TO</button>
+        </div>
+    </div>
+
+    <!-- Active Colinha Display -->
+    <div class="colinha-display-card">
+        <div class="state-active-title" id="stateTitle">
+            Colinha para o Estado: <span style="color:#008736;" id="stateName">Acre (AC)</span>
+        </div>
+        <div id="stateWarning" class="state-warning-text"></div>
+
+        <div class="image-wrapper" onclick="openFullscreen()">
+            <img id="colinhaImage" src="minha-colinha-2026-AC.png" alt="Colinha 2026 AC" class="colinha-img" onerror="handleImageError()">
+            <div id="imageNotFoundCard" class="image-not-found-card">
+                <h3>⚠️ Imagem não encontrada no diretório</h3>
+                <p>Certifique-se de salvar o arquivo de imagem na mesma pasta com o nome:<br>
+                <strong id="expectedFileName" style="color:#001b44;">minha-colinha-2026-AC.png</strong> (ou .jpg)</p>
+            </div>
+        </div>
+
+        <button onclick="openFullscreen()" class="action-btn btn-fullscreen">
+            🔍 Visualizar a Colinha em Tela Cheia
+        </button>
+    </div>
+</div>
+
+<!-- Fullscreen Modal Overlay -->
+<div class="modal-overlay" id="fullscreenModal" onclick="checkCloseModal(event)">
+    <div class="modal-container">
+        <div class="modal-header">
+            <div class="modal-header-content">
+                <div class="modal-title" id="modalStateTitle">Colinha Acre (AC) - 2026</div>
+                <div id="modalStateWarning" class="modal-warning-text"></div>
+            </div>
+            <button class="close-modal-btn" onclick="closeFullscreen()">✕</button>
+        </div>
+
+        <div class="modal-body">
+            <img id="modalImage" src="minha-colinha-2026-AC.png" alt="Colinha 2026 Fullscreen" class="modal-img">
+        </div>
+
+        <div class="modal-footer">
+            <a id="modalDownloadBtn" href="minha-colinha-2026-AC.png" download="minha-colinha-2026-AC.png" class="btn-modal-download">
+                📥 Baixar Colinha (<span id="modalDownloadUF">AC</span>)
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+    // Dicionário com as mensagens especiais de cada estado (em vermelho)
+    // Você pode editar, adicionar ou remover estados aqui
+    const avisosPorEstado = {
+        'AC': 'PERIGO de Jorge Viana(PT) ir para o SENADO, vamos votar em peso para Marcio(PL) e Mara',
+        'SP': 'PERIGO de Marina e Tebet irem para o SENADO, vamos votar em peso para André do Prado(PL) e Derrite',
+        'RJ': 'PERIGO de Benedita da Silva(PT) ire para o SENADO, vamos votar em peso para Carlos Portinho(PL) e Crivella',
+        'MG': 'PERIGO de Marilia(PT) e o Aécio Neves no SENADO, temos que votar em peso para Marcelo Aro e Carlos Viana',
+    };
+
+    let currentUF = "AC";
+    let currentName = "Acre";
+    let currentAttemptIndex = 0;
+
+    // Lista inteligente de formatos e variações de maiúsculas/minúsculas
+    function getPossibleFilePaths(uf) {
+        return [
+            `minha-colinha-2026-${uf}.png`,
+            `minha-colinha-2026-${uf}.PNG`,
+            `minha-colinha-2026-${uf.toLowerCase()}.png`,
+            `minha-colinha-2026-${uf.toLowerCase()}.PNG`,
+            `minha-colinha-2026-${uf}.jpg`,
+            `minha-colinha-2026-${uf}.JPG`,
+            `minha-colinha-2026-${uf.toLowerCase()}.jpg`,
+            `minha-colinha-2026-${uf.toLowerCase()}.JPG`,
+            `minha-colinha-2026-${uf}.jpeg`,
+            `minha-colinha-2026-${uf.toLowerCase()}.jpeg`
+        ];
+    }
+
+    function selectUF(uf, name) {
+        currentUF = uf;
+        currentName = name;
+        currentAttemptIndex = 0;
+
+        // Atualiza estilo ativo nos botões
+        const buttons = document.querySelectorAll('.uf-btn');
+        buttons.forEach(btn => {
+            // Verifica se o texto do botão é igual à UF procurada
+            if (btn.innerText.trim() === uf) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
+
+
+        // Atualiza textos
+        document.getElementById('stateName').innerText = `${name} (${uf})`;
+        document.getElementById('modalStateTitle').innerText = `Colinha ${name} (${uf}) - 2026`;
+        document.getElementById('modalDownloadUF').innerText = uf;
+        document.getElementById('expectedFileName').innerText = `minha-colinha-2026-${uf}.png`;
+
+        // Exibe o aviso especial se existir no dicionário
+        const avisoEl = document.getElementById('stateWarning');
+        const modalAvisoEl = document.getElementById('modalStateWarning');
+
+        if (avisosPorEstado[uf]) {
+            // Seta no menu principal
+            avisoEl.innerText = avisosPorEstado[uf];
+            avisoEl.style.display = 'block';
+            
+            // Seta no Modal de Tela Cheia
+            modalAvisoEl.innerText = avisosPorEstado[uf];
+            modalAvisoEl.style.display = 'block';
+        } else {
+            // Esconde ambos se não houver texto
+            avisoEl.style.display = 'none'; 
+            modalAvisoEl.style.display = 'none';
+        }
+
+
+        // Restaura exibição da imagem
+        document.getElementById('colinhaImage').style.display = 'block';
+        document.getElementById('modalImage').style.display = 'block';
+        document.getElementById('imageNotFoundCard').style.display = 'none';
+
+        // Tenta carregar a imagem na primeira extensão
+        tryNextImageFormat();
+    }
+
+    function tryNextImageFormat() {
+        const paths = getPossibleFilePaths(currentUF);
+        
+        if (currentAttemptIndex < paths.length) {
+            const nextPath = paths[currentAttemptIndex];
+            currentAttemptIndex++;
+
+            const imgElement = document.getElementById('colinhaImage');
+            const modalImg = document.getElementById('modalImage');
+            const modalDownloadBtn = document.getElementById('modalDownloadBtn');
+
+            imgElement.src = nextPath;
+            imgElement.alt = `Colinha 2026 ${currentUF}`;
+            modalImg.src = nextPath;
+            modalImg.alt = `Colinha 2026 ${currentUF}`;
+            modalDownloadBtn.href = nextPath;
+            modalDownloadBtn.download = nextPath;
+        } else {
+            // Se testou todas as variações (.png, .PNG, .jpg, .JPG, etc.) e nenhuma abriu:
+            document.getElementById('colinhaImage').style.display = 'none';
+            document.getElementById('modalImage').style.display = 'none';
+            document.getElementById('imageNotFoundCard').style.display = 'block';
+        }
+    }
+
+    function handleImageError() {
+        // Disparado no evento onerror da imagem
+        tryNextImageFormat();
+    }
+
+    /* --- HISTORY API LOGIC FOR MOBILE BACK BUTTON --- */
+    function openFullscreen() {
+        const modal = document.getElementById('fullscreenModal');
+        modal.classList.add('active');
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+        
+        // Empurra um estado falso no histórico do navegador ao abrir
+        history.pushState({ modalOpen: true }, '', '');
+    }
+
+    function closeFullscreen() {
+        const modal = document.getElementById('fullscreenModal');
+        if (modal.classList.contains('active')) {
+            modal.classList.remove('active');
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
+            
+            // Se o fechamento for manual (botão X ou clique fora), volta o histórico para manter sincronia
+            if (history.state && history.state.modalOpen) {
+                history.back();
+            }
+        }
+    }
+
+    // Intercepta a ação do botão físico/gesto de Voltar do celular
+    window.addEventListener('popstate', function(event) {
+        const modal = document.getElementById('fullscreenModal');
+        // Se o usuário clicar em "voltar", ele remove o histórico falso e caímos aqui.
+        // Apenas fechamos o modal, impedindo de sair da página.
+        if (modal.classList.contains('active')) {
+            modal.classList.remove('active');
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
+        }
+    });
+
+    function checkCloseModal(event) {
+        if (event.target.classList.contains('modal-overlay') || event.target.classList.contains('modal-body')) {
+            // Se clicar fora, chamamos a função que fecha
+            if (history.state && history.state.modalOpen) {
+                history.back(); // Dispara o popstate nativamente
+            } else {
+                closeFullscreen(); 
+            }
+        }
+    }
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            if (history.state && history.state.modalOpen) {
+                history.back();
+            } else {
+                closeFullscreen();
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>
